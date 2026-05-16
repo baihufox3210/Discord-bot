@@ -27,12 +27,12 @@ class Ping(commands.Cog):
     @commands.command()
     async def ping(self, ctx):
         embed = await self.send_ping(ctx.send)
-        await ctx.send(embed=embed)
+        await ctx.send(embed = embed)
 
-    @app_commands.command(name="ping", description="查看延遲")
+    @app_commands.command(name = "ping", description = "查看延遲")
     async def ping_slash(self, interaction: discord.Interaction):
         embed = await self.send_ping(interaction.response.send_message)
-        await interaction.followup.send(embed=embed)
+        await interaction.followup.send(embed = embed)
 
 async def setup(bot):
     await bot.add_cog(Ping(bot))
