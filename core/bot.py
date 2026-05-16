@@ -32,5 +32,5 @@ class Bot(commands.Bot):
         self.logger.success("🟢 Bot Online", f"User: {self.user}")
         
     async def close(self):
-        self.logger.warning("🟡 Bot Shutdown", f"{self.user} 已離線")
+        self.logger.warning("🟡 Bot Shutdown", f"Bot: {self.user} disconnected")
         await super().close()
