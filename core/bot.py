@@ -1,6 +1,6 @@
-import os
+from .logger import logger
 
-import discord
+import os, discord, traceback
 from discord.ext import commands
 
 class Bot(commands.Bot):
@@ -11,6 +11,8 @@ class Bot(commands.Bot):
             command_prefix = "♡",
             intents = intents
         )
+        
+        self.logger = logger
 
     async def setup_hook(self):
         await self.load_extensions()
@@ -24,4 +26,11 @@ class Bot(commands.Bot):
                     extension = rel_path.replace(os.sep, ".")[:-3]
                     
                     try: await super().load_extension(extension)
-                    except Exception as e: print(f"無法載入 {extension}")
+                    except Exception as e: self.logger.error("Extension Load Failed", traceback.format_exc())
+    
+    async def on_ready(self):
+        self.logger.success("🟢 Bot Online", f"User: {self.user}")
+        
+    async def close(self):
+        self.logger.warning("🟡 Bot Shutdown", f"{self.user} 已離線")
+        await super().close()
