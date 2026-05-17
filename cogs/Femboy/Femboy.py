@@ -9,7 +9,7 @@ class Femboy(commands.Cog):
         
     async def _send(self, channel, user, count):
         for _ in range(count):
-            await channel.send(f"{user.mention} 今天要女裝了嗎")
+            await channel.send(f"{user.mention} 今天女裝了嗎")
             await asyncio.sleep(.2)
         
     @app_commands.command(name = "femboy", description = "royoo 要女裝了嗎~")
