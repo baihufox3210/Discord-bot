@@ -14,7 +14,7 @@ class Femboy(commands.Cog):
         
     @app_commands.command(name = "femboy", description = "royoo 要女裝了嗎~")
     async def femboy_slash(self, interaction: discord.Interaction, channel: discord.TextChannel = None, user: discord.User = None, count: int = 3):
-        await   interaction.response.defer()
+        await interaction.response.defer()
         
         channel = channel or await self.bot.fetch_channel(1311094222656639018)
         user = user or self.bot.get_user(1328156380779118644)
